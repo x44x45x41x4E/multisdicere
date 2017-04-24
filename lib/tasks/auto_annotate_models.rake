@@ -1,5 +1,5 @@
 if Rails.env.development?
-  Annotate.set_defaults("exclude_tests" => "true", "sort" => "true")
+  Annotate.set_defaults("exclude_tests" => "true", "sort" => "true", "position" => "bottom")
 
   # Annotate models
   task :annotate do
