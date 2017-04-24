@@ -10,7 +10,7 @@ two:
 
 # == Schema Information
 #
-# Table name: channels
+# Table name: rooms
 #
 #  created_at  :datetime         not null
 #  description :text

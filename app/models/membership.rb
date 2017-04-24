@@ -2,7 +2,7 @@ class Membership < ApplicationRecord
   belongs_to :user
   belongs_to :joinable, polymorphic: true
 
-  scope :channels, -> { where(joinable_type: 'Channel') }
+  scope :rooms, -> { where(joinable_type: 'Room') }
   # For adding multitenancy later on and classifying one on one chats
   scope :teams, -> { where(joinable_type: 'Team') }
   scope :conversations, -> { where(joinable_type: 'Conversation') }

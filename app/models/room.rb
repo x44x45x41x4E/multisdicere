@@ -1,4 +1,4 @@
-class Channel < ApplicationRecord
+class Room < ApplicationRecord
   has_many :messages, as: :messageable
   has_many :memberships, as: :joinable
   has_many :users, through: :memberships
@@ -6,7 +6,7 @@ end
 
 # == Schema Information
 #
-# Table name: channels
+# Table name: rooms
 #
 #  created_at  :datetime         not null
 #  description :text
