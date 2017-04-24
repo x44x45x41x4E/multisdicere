@@ -19,6 +19,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'hamlit'
 gem 'foundation-rails'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug', platform: :mri
