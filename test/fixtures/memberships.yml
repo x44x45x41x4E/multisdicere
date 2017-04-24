@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  joinable: one
+  joinable_type: Joinable
+
+two:
+  user: two
+  joinable: two
+  joinable_type: Joinable
+
+# == Schema Information
+#
+# Table name: memberships
+#
+#  created_at    :datetime         not null
+#  id            :integer          not null, primary key
+#  joinable_id   :integer
+#  joinable_type :string
+#  updated_at    :datetime         not null
+#  user_id       :integer
+#
