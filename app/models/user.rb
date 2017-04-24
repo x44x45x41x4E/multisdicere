@@ -5,6 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  has_many :sent_messages, class_name: "Message", foreign_key: :sender_id
+  has_many :received_messages, as: :messageable, class_name: "Message"
+  has_many :memberships
+  has_many :channels, through: :memberships
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
