@@ -1,16 +1,27 @@
-!!! 5
-%html{ :lang => "en" }
+!!!
+%html
   %head
-    %meta{ :charset => "utf-8" }
-
-    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
-
-    %title= content_for?(:title) ? yield(:title) : "Untitled"
-
-    = stylesheet_link_tag "application"
-    = javascript_include_tag "application", "data-turbolinks-track" => true
-    = csrf_meta_tag
-
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Multisdicere'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Rails Devise'}"}
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
   %body
+    %header
+      = render 'layouts/navigation'
+    %main{:role => "main"}
+      %div.container
+        %div.row
+          %div.medium-2.columns{"data-sticky-container" => "true"}
+            - if user_signed_in?
+              %div.sticky{"data-sticky" => "true", "data-options" => "marginTop: 4;", :style => "width: 100%"}
+                %h5 Rooms
+                %ul
+                  - current_user.rooms.each do |room|
+                    %li
+                      = link_to room.name, room, data: {behavior: 'room-link', room_id: room.id}
 
-    = yield
+          %div.medium-10.columns
+            = render 'layouts/messages'
+            = yield

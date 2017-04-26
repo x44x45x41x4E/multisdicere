@@ -1,0 +1,16 @@
+.top-bar-container{"data-sticky-container" => ""}
+  .sticky.sticky-topbar{"data-options" => "anchor: page; marginTop: 0; stickyOn: small;", "data-sticky" => ""}
+    .top-bar
+      .top-bar-left
+        %ul.dropdown.menu{"data-dropdown-menu" => ""}
+          %li.menu-text
+            Multisdicere
+          %li.has-submenu
+            %li
+          -#     -# = render 'layouts/navigation_links'
+          -#   -# %ul.submenu.menu.vertical{"data-submenu" => ""}'
+          %li
+            = link_to "Home", root_path
+      .top-bar-right
+        %ul.menu
+          = render 'layouts/nav_links_for_auth'
