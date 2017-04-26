@@ -1,6 +1,8 @@
 class Message < ApplicationRecord
   belongs_to :sender, class_name: 'User'
   belongs_to :messageable, polymorphic: true
+  has_one :self_ref, class_name: self, foreign_key: :id
+  has_one :room, through: :self_ref, source: :messageable, source_type: "Room"
 end
 
 # == Schema Information

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :sent_messages, class_name: "Message", foreign_key: :sender_id
   has_many :received_messages, as: :messageable, class_name: "Message"
   has_many :memberships
-  has_many :rooms, through: :memberships
+  has_many :rooms, through: :memberships, source: :joinable, source_type: "Room"
 
   def self.new_with_session(params, session)
     super.tap do |user|
