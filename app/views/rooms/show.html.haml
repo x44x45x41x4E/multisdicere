@@ -1,0 +1,14 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @room.name
+  %br
+  %b Description:
+  = @room.description
+
+%div{"data-behavior" => "messages", "data-room-id" => "#{@room.id}"}
+  - @messages.each do |message|
+    = render message
+
+= form_for [@room, Message.new] do |f|
+  = f.text_area :body, rows: 1, class: "form-control", autofocus: true

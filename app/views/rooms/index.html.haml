@@ -1,0 +1,22 @@
+%h4 Rooms
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+  %tbody
+    - @rooms.each do |room|
+      %tr
+        %td= room.name
+        %td= room.description
+        %td= link_to 'Show', room
+        %td= link_to 'Join', room_memberships_path(room), method: :post
+        %td= link_to 'Leave', room_memberships_path(room), method: :delete
+
+%br
+
+= link_to 'New Room', new_room_path
