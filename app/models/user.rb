@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :sent_messages, class_name: "Message", foreign_key: :sender_id
-  has_many :received_messages, as: :messageable, class_name: "Message"
-  has_many :memberships
-  has_many :rooms, through: :memberships, source: :joinable, source_type: "Room"
+  has_many :sent_messages, class_name: "Message", foreign_key: :sender_id, dependent: :destroy
+  has_many :received_messages, as: :messageable, class_name: "Message", dependent: :destroy
+  has_many :memberships, dependent: :destroy
+  has_many :rooms, through: :memberships, source: :joinable, source_type: "Room", dependent: :destroy
 
   def self.new_with_session(params, session)
     super.tap do |user|

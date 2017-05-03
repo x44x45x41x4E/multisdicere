@@ -1,6 +1,6 @@
 class Room < ApplicationRecord
-  has_many :messages, as: :messageable
-  has_many :memberships, as: :joinable
+  has_many :messages, as: :messageable, dependent: :destroy
+  has_many :memberships, as: :joinable, dependent: :destroy
   has_many :users, through: :memberships
 
   def is_member? current_user_id
