@@ -7,3 +7,15 @@ class Team < ApplicationRecord
       Apartment::Tenant.create(subdomain)
     end
 end
+
+# == Schema Information
+#
+# Table name: public.teams
+#
+#  created_at  :datetime         not null
+#  description :text
+#  id          :integer          not null, primary key
+#  name        :string
+#  subdomain   :string
+#  updated_at  :datetime         not null
+#
