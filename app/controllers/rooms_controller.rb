@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1.json
   def show
     @messages = @room.messages.order(created_at: :asc).limit(100)
+    @membership = current_user.memberships.find_by(joinable_id: @room.id, joinable_type: "Room")
   end
 
   # GET /rooms/new

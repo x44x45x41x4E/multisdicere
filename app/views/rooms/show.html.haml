@@ -6,8 +6,13 @@
   %b Description:
   = @room.description
 
+- unread_messages = false
 %div{"data-behavior" => "messages", "data-room-id" => "#{@room.id}"}
   - @messages.each do |message|
+    - if !unread_messages && @membership.last_read_at < message.created_at
+      - unread_messages = true
+      .strike
+        %span Unread Messages
     = render message
 
 = form_for [@room, Message.new] do |f|

@@ -16,6 +16,7 @@ end
 #  id            :integer          not null, primary key
 #  joinable_id   :integer
 #  joinable_type :string
+#  last_read_at  :datetime
 #  updated_at    :datetime         not null
 #  user_id       :integer
 #
